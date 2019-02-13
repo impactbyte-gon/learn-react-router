@@ -1,27 +1,29 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import styled from 'styled-components'
+
+import Navigation from './components/Navigation'
 
 import Home from './pages/Home'
 import About from './pages/About'
 import Help from './pages/Help'
 
+const AppContainer = styled.div`
+  font-family: Arial, Helvetica, sans-serif;
+`
+
 class App extends Component {
   render() {
     return (
       <Router>
-        <div>
-          <nav>
-            <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
-            <Link to="/help">Help</Link>
-          </nav>
-
+        <AppContainer>
+          <Navigation />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/about" component={About} />
             <Route path="/help" component={Help} />
           </Switch>
-        </div>
+        </AppContainer>
       </Router>
     )
   }
